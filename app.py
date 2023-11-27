@@ -17,15 +17,16 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route('/result', methods=['POST'])
+@app.route('/result', methods=['GET'])
 def result():
     try:
-        data = request.get_json()
-        cities = data.get('cities')
+        cities_param = request.args.get('cities')
+
+        cities = json.loads(cities_param)
 
         return render_template('result.html', cities=cities)
     except Exception as e:
-        return str(e), 400 
+        return str(e), 400
 
 @app.route('/process', methods=['POST'])
 def process():
