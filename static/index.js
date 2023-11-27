@@ -18,7 +18,7 @@ async function submitForm() {
             const processResult = await processResponse.json();
 
             const cities = processResult.result;
-
+            global_input = userInput;
             window.location.href = '/result?cities=' + encodeURIComponent(JSON.stringify(cities));
         } else {
             console.error('Error:', processResponse.status);
