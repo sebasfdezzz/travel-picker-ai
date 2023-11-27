@@ -10,6 +10,8 @@ def getCity(text):
 
 
 from flask import Flask, render_template, request, jsonify
+import sys
+import json
 import openai
 
 app = Flask(__name__)
