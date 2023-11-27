@@ -48,19 +48,28 @@ def process():
 
 @app.route('/get_image/<city>')
 def get_unsplash_image(city):
-    # Replace 'YOUR_ACCESS_KEY' with your actual Unsplash API access key
     access_key = '7iU8pHx9ol-FJexwDVFIgdhMpO-wxKVNk9tbKovW8PU'
     base_url = 'https://api.unsplash.com/search/photos/'
     params = {
-        'query': 'city of '+ city,
+        'query': 'city of ' + city,
         'client_id': access_key,
     }
 
     try:
         response = requests.get(base_url, params=params)
-        data = response.json()
-        image_url = data[0]['urls']['small']
-        return jsonify({'image_url': image_url})
+        
+        if response.status_code == 200:
+            data = response.json()
+            
+            if data and 'results' in data and data['results']:
+                # Assuming 'results' is the key containing the list of photos
+                image_url = data['results'][0]['urls']['small']
+                return jsonify({'image_url': image_url})
+            else:
+                return jsonify({'error': 'No results found'}), 404
+        else:
+            return jsonify({'error': f'Request failed with status code {response.status_code}'}), 500
+
     except Exception as e:
         return jsonify({'error': str(e)}), 500
     
