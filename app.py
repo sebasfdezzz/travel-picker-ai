@@ -87,4 +87,19 @@ def get_gpt_reason():
 
     
 if __name__ == '__main__':
+    if len(sys.argv) != 2:
+        print("Usage: python app.py <key_file_path>")
+        sys.exit(1)
+
+    key_file_path = sys.argv[1]
+
+    try:
+        with open(key_file_path, 'r') as key_file:
+            openai_key = key_file.read().strip()
+    except FileNotFoundError:
+        print(f"Error: Key file not found at {key_file_path}")
+        sys.exit(1)
+
+    # Use the openai_key as needed in your application
+    print(f"Using OpenAI key from {key_file_path}: {openai_key}")
     app.run(host='0.0.0.0',port=3003)
