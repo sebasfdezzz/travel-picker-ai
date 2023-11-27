@@ -1,7 +1,5 @@
 console.log("hello world")
 
-
-
 async function submitForm() {
     var userInput = document.getElementById('textInput').value;
 
