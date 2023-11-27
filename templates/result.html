@@ -1,0 +1,26 @@
+<!-- result.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Recommendation</title>
+    <script src="{{ url_for('static', filename='your_script.js') }}"></script>
+</head>
+<body>
+    <h1>Processed Cities</h1>
+    <ul>
+        {% for city in cities %}
+            <li>{{ city }}</li>
+        {% endfor %}
+    </ul>
+
+
+    
+    <script>
+        var citiesData = {{ cities | tojson | safe }};
+        handleCitiesData(citiesData);
+    </script>
+</body>
+</html>
