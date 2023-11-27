@@ -9,12 +9,12 @@ def getCity(text):
 
 
 
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, request, jsonify
 import openai
 
 app = Flask(__name__)
 
-openai.api_key = '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'
+openai.api_key = ''
 
 @app.route('/')
 def index():
