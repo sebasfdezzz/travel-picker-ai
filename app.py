@@ -40,5 +40,22 @@ def process():
     except Exception as e:
         return jsonify(error=str(e)), 400
 
+@app.route('/get_image/<city>')
+def get_unsplash_image(city):
+    # Replace 'YOUR_ACCESS_KEY' with your actual Unsplash API access key
+    access_key = '7iU8pHx9ol-FJexwDVFIgdhMpO-wxKVNk9tbKovW8PU'
+    base_url = 'https://api.unsplash.com/search/photos/'
+    params = {
+        'query': 'city of '+ city,
+        'client_id': access_key,
+    }
+
+    try:
+        response = requests.get(base_url, params=params)
+        data = response.json()
+        image_url = data[0]['urls']['small']
+        return jsonify({'image_url': image_url})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 if __name__ == '__main__':
     app.run(host='0.0.0.0',port=3003)
