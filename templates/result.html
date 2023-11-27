@@ -5,19 +5,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='result.css') }}">
     <title>Travel Recommendation</title>
     <script src="{{ url_for('static', filename='result.js') }}"></script>
 </head>
 <body>
-    <h1>Processed Cities</h1>
-    <ul>
-        {% for city in cities %}
-            <li>{{ city }}</li>
-        {% endfor %}
-    </ul>
+  <h2>You Should Go To...</h2>
 
+  <div id="imageCarousel" class="carousel">
 
-    
+  <input type="radio" name="position" checked />
+  <input type="radio" name="position" />
+  <input type="radio" name="position" />
+  <input type="radio" name="position" />
+  <input type="radio" name="position" />
+  <main id="carousel">
+<div class="item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/47/New_york_times_square-terabass.jpg" alt="Image 1">
+        <label>Label 1</label>
+      </div>
+      <div class="item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/47/New_york_times_square-terabass.jpg" alt="Image 2">
+        <label>Label 2</label>
+      </div>
+      <div class="item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/47/New_york_times_square-terabass.jpg" alt="Image 3">
+        <label>Label 3</label>
+      </div>
+      <div class="item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/47/New_york_times_square-terabass.jpg" alt="Image 4">
+        <label>Label 4</label>
+      </div>
+      <div class="item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/47/New_york_times_square-terabass.jpg" alt="Image 5">
+        <label>Label 5</label>
+      </div>
+    </main>
+</div>
+
+  <div class="borderedDiv">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin condimentum, nisl ac varius feugiat, eros velit tincidunt ex, ut venenatis nisl odio in justo.</p>
+  </div>
+      <button onclick="goToKayak()">Buy Now</button>
     <script>
         var citiesData = {{ cities | tojson | safe }};
         handleCitiesData(citiesData);
