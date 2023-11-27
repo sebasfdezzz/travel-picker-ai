@@ -29,7 +29,7 @@ function updateImageAndLabel(city, imageUrl) {
     const labelElement = document.querySelector(`#imageCarousel .item:nth-child(${cityIndex + 1}) label`);
 
     imageElement.src = imageUrl;
-    labelElement.textContent = `Label ${cityIndex + 1}`;
+    labelElement.textContent = city;
   }
 }
 
