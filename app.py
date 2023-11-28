@@ -14,7 +14,8 @@ import sys
 import json
 from openai import OpenAI
 import requests
-import random 
+import random
+import time 
 
 app = Flask(__name__)
 client = None
