@@ -26,5 +26,3 @@ async function submitForm() {
     }
 }
 
-module.exports = global_input;
-
