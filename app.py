@@ -106,7 +106,7 @@ def get_gpt_reason():
             max_tokens=100
         )
         #print(chat_completion)
-
+        print(chat_completion)
         generated_reason = chat_completion['choices'][0]['message']['content']
 
         return jsonify({'generated_reason': generated_reason})
