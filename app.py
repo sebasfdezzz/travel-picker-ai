@@ -157,7 +157,7 @@ def get_gpt_reason():
         return jsonify({'error': str(e)}), 500
 
 @app.route('/get-date', methods=['GET'])
-def getDate():
+def getDate(): #Reconocimiento de entidades de tiempo para fechas de vuelos
     try:
         if global_input:
             input_text = global_input[0].lower()
