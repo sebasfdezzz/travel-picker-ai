@@ -1,4 +1,4 @@
-var airports = {
+let airports = {
     "Bangkok": "BKK",
     "London": "LHR",
     "Paris": "CDG",
