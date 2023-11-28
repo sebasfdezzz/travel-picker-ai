@@ -13,7 +13,8 @@ from flask import Flask, render_template, request, jsonify
 import sys
 import json
 import openai
-import requests 
+import requests
+import random 
 
 app = Flask(__name__)
 
@@ -51,7 +52,7 @@ def get_unsplash_image(city):
     access_key = '7iU8pHx9ol-FJexwDVFIgdhMpO-wxKVNk9tbKovW8PU'
     base_url = 'https://api.unsplash.com/search/photos/'
     params = {
-        'query': 'city of ' + city,
+        'query': city,
         'client_id': access_key,
     }
 
@@ -62,8 +63,9 @@ def get_unsplash_image(city):
             data = response.json()
             
             if data and 'results' in data and data['results']:
-                # Assuming 'results' is the key containing the list of photos
-                image_url = data['results'][0]['urls']['small']
+                random_index = random.randint(0, len(data['results']) - 1)
+
+                image_url = data['results'][random_index]['urls']['small']
                 return jsonify({'image_url': image_url})
             else:
                 return jsonify({'error': 'No results found'}), 404
