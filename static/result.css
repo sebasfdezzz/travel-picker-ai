@@ -169,3 +169,24 @@ display: block;
 text-align: center;
 }
 
+
+
+.carousel {
+  position: relative;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 24px;
+  cursor: pointer;
+}
+
+#leftArrow {
+  left: 10px;
+}
+
+#rightArrow {
+  right: 10px;
+}
