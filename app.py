@@ -107,9 +107,9 @@ def get_gpt_reason():
         )
         #print(chat_completion)
         print(chat_completion)
-        #generated_reason = chat_completion['choices'][0]['message']['content']
+        generated_reason = chat_completion.choices[0].message.content
 
-        return jsonify({'generated_reason': chat_completion})
+        return jsonify({'generated_reason': generated_reason})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
