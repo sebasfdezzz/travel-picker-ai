@@ -27,7 +27,7 @@ body {
   }
   
   #textInput {
-    width: 80%;
+    width: 70%;
     padding: 10px;
     margin: 10px;
     border: 2px solid #4caf50; /* Green border */
@@ -42,7 +42,7 @@ body {
     border-radius: 20px;
     cursor: pointer;
     transition: background-color 0.3s ease; /* Hover animation */
-    margin-top: 10px; /* Add some space between input and button */
+    margin-top: 28px; /* Add some space between input and button */
   }
   
   button:hover {
