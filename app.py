@@ -56,7 +56,7 @@ def process():
 @app.route('/get_image/<city>')
 def get_unsplash_image(city):
     temp_url='https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/310px-Placeholder_view_vector.svg.png'
-    #return jsonify({'image_url': temp_url}) #comment for prodcution
+    return jsonify({'image_url': temp_url}) #comment for prodcution
     access_key = '7iU8pHx9ol-FJexwDVFIgdhMpO-wxKVNk9tbKovW8PU'
     base_url = 'https://api.unsplash.com/search/photos/'
     params = {
@@ -85,6 +85,8 @@ def get_unsplash_image(city):
     
 @app.route('/reason-to-go/', methods=['POST'])
 def get_gpt_reason():
+    temp =  "sd asndjafskn akjf skndf dnf dsdn fdskn fdskn fkf dskf dsnf dsknf dsknf dsfk sknds fkdsf sknf sdknf dsnf dsknf dskf dsfknds flsd fns fkds fdsknf dskfn dsfknds fkds fkdsnf dskf dsknfds fks fdsknf dsknf dsknf dskf dskf dsknf fkds fks frekg trkn hknyt hkyth ylj yl jytpkhrkgepf wfow dqk dad 2o3 43kr f f foe flkf el feb grv ekv eovfe voefvke v e."
+    jsonify({'generated_reason': temp}) #comment for production
     try:
         data = request.get_json()
         input_text = gloabl_input[0]
@@ -105,8 +107,6 @@ def get_gpt_reason():
             model="gpt-3.5-turbo",
             max_tokens=100
         )
-        #print(chat_completion)
-        print(chat_completion)
         generated_reason = chat_completion.choices[0].message.content
 
         return jsonify({'generated_reason': generated_reason})
