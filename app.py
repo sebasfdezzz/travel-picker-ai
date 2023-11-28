@@ -99,11 +99,11 @@ def get_gpt_reason():
             messages=[
                 {
                     "role": "user",
-                    "content": prompt,
-                    "max_tokens":100
+                    "content": prompt
                 }
             ],
             model="gpt-3.5-turbo",
+            max_tokens=100
         )
         #print(chat_completion)
 
