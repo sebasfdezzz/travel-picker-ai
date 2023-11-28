@@ -100,13 +100,14 @@ def get_gpt_reason():
                 {
                     "role": "user",
                     "content": prompt,
+                    "max_tokens":100
                 }
             ],
             model="gpt-3.5-turbo",
         )
-        //print(chat_completion)
+        #print(chat_completion)
 
-        generated_reason = chat_completion.choices[0].message.content
+        generated_reason = chat_completion['choices'][0]['message']['content']
 
         return jsonify({'generated_reason': generated_reason})
     except Exception as e:
