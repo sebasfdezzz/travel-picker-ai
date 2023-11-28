@@ -1,4 +1,3 @@
-const global_input = require('./index');
 let chosen_city="New York";
 let cities_result = []; // Assuming this array is declared
 
