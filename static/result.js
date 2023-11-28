@@ -155,15 +155,35 @@ function updateImageAndLabel(city, imageUrl) {
   }
 }
 
-function goToKayak() {
-    if (airports.hasOwnProperty(chosen_city)) {
-      let kayakLink = `https://www.kayak.com.mx/flights/MEX-${airports[chosen_city]}/2024-01-01/2024-01-31-flexible-calendar-6to8?sort=bestflight_a`;
-      // Open the Kayak link in a new tab
+async function goToKayak() {
+  if (airports.hasOwnProperty(chosen_city)) {
+    try {
+      let response = await fetch('/get-date');
+      let fromDate;
+
+      if (!response.ok) {
+        fromDate="2024-01-01";
+      }else{
+        fromDate = new Date(await response.text());
+      }      
+      
+      let toDate = new Date(fromDate);
+      toDate.setDate(toDate.getDate() + 30);
+      
+      let formattedFromDate = fromDate.toISOString().split('T')[0];
+      let formattedToDate = toDate.toISOString().split('T')[0];
+      
+      let kayakLink = `https://www.kayak.com.mx/flights/MEX-${airports[chosen_city]}/${formattedFromDate}/${formattedToDate}-flexible-calendar-6to8?sort=bestflight_a`;
+
       window.open(kayakLink, '_blank');
-    } else {
-      console.error("Airport code not found for the chosen city");
+    } catch (error) {
+      console.error("Error:", error.message);
     }
+  } else {
+    console.error("Airport code not found for the chosen city");
+  }
 }
+
 
 
 function getGptReason(city) {

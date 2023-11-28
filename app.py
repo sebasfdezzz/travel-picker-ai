@@ -18,11 +18,54 @@ def getCities(text):
 
 app = Flask(__name__)
 client = None
-
 client = OpenAI(
     api_key="My API Key",
 )
 gloabl_input=[""]
+
+time_entities = {
+    "season": {
+      "summer": "2024-06-21",
+      "winter": "2023-12-21",
+      "spring": "2024-03-21",
+      "fall": "2024-09-24"
+    },
+    "month": {
+      "january": "2024-01-01",
+      "february": "2024-02-01",
+      "march": "2024-03-01",
+      "april": "2024-04-01",
+      "may": "2024-05-01",
+      "june": "2024-06-01",
+      "july": "2024-07-01",
+      "august": "2024-08-01",
+      "september": "2024-09-01",
+      "october": "2024-10-01",
+      "november": "2024-11-01",
+      "december": "2023-12-01"
+    },
+    "holiday": {
+      "spring break": "2024-03-15",
+      "summer break": "2024-06-15",
+      "spring vacation": "2024-03-15",
+      "summer vacation": "2024-06-15",
+      "christmas": "2023-12-25",
+      "new year": "2024-01-01",
+      "easter": "2024-04-15",
+      "thanksgiving": "2024-11-23",
+      "halloween": "2024-10-31",
+      "independence day": "2024-07-04",
+      "labor day": "2024-09-04",
+      "memorial day": "2024-05-29",
+      "hanukkah": "2023-12-13",
+      "diwali": "2024-11-06",
+      "eid al-fitr": "2024-05-27",
+      "eid al-adha": "2024-07-20",
+      "valentine's day": "2024-02-14",
+      "mother's day": "2024-05-14",
+      "father's day": "2024-06-18",
+    }
+  }
 
 @app.route('/')
 def index():
@@ -112,6 +155,20 @@ def get_gpt_reason():
         return jsonify({'generated_reason': generated_reason})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+
+@app.route('/get-date', methods=['GET'])
+def getDate():
+    try:
+        if global_input:
+            input_text = global_input[0].lower()
+            for entity_type, entities in time_entities.items():
+                for entity in entities:
+                    if entity in input_text:
+                        return time_entities[entity_type][entity]
+        return "2024-01-01" 
+    except Exception as e:
+        return "2024-01-01"
+
 
 
     
