@@ -89,17 +89,19 @@ def get_gpt_reason():
 
         prompt = f'Tell me why {city} is a good place to go given a person is looking for a place to vacation and this is their input: {input_text}'
 
-        response = openai.Completion.create(
-            engine="text-davinci-002", 
+        model = openai.Model.retrieve("text-davinci-002")
+
+        response = model.complete(
             prompt=prompt,
-            max_tokens=150 
+            max_tokens=150
         )
 
-        generated_reason = response['choices'][0]['text'].strip()
+        generated_reason = response.choices[0].text.strip()
 
         return jsonify({'generated_reason': generated_reason})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+
 
     
 if __name__ == '__main__':

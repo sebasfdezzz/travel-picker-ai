@@ -7,19 +7,20 @@ function handleCitiesData(citiesData) {
     cities_result.push(city);
 
     getUnsplashImageAndUpdate(city);
-    getGptReason(chosen_city);
-        // Get all radio buttons with the name "position"
-        var radioButtons = document.querySelectorAll('input[name="position"]');
+   
+  });
+  getGptReason(chosen_city);
+  // Get all radio buttons with the name "position"
+  var radioButtons = document.querySelectorAll('input[name="position"]');
 
-        // Add a click event listener to each radio button
-        radioButtons.forEach(function (radio, index) {
-            radio.addEventListener('click', function () {
-                // The index variable contains the position (1-5) of the clicked radio button
-                console.log("Selected position: " + (index + 1));
-                chosen_city = cities_result[index];
-                getGptReason(chosen_city);
-            });
-        });
+  // Add a click event listener to each radio button
+  radioButtons.forEach(function (radio, index) {
+      radio.addEventListener('click', function () {
+          // The index variable contains the position (1-5) of the clicked radio button
+          console.log("Selected position: " + (index + 1));
+          chosen_city = cities_result[index];
+          getGptReason(chosen_city);
+      });
   });
 }
 
