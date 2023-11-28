@@ -93,7 +93,7 @@ def get_gpt_reason():
         if not input_text or not city:
             return jsonify({'error': 'Both "input" and "city" parameters are required.'}), 400
 
-        prompt = f'Tell me why {city} is a good place to go given a person is looking for a place to vacation and this is their input: {input_text}'
+        prompt = f'In a maximum of 60 words tell me why {city} is a good place to go given a person is looking for a place to vacation and this is their input: {input_text}'
 
         chat_completion = client.chat.completions.create(
             messages=[
