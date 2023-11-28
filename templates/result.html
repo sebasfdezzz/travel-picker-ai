@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='result.css') }}">
     <title>Travel Recommendation</title>
     <script src="{{ url_for('static', filename='result.js') }}" defer></script>
-    <script src="{{ url_for('static', filename='index.js') }}" defer></script>
 </head>
 <body>
   <h2>You Should Go To...</h2>
@@ -50,7 +49,8 @@
       <button onclick="goToKayak()">Buy Now</button>
     <script>
         var citiesData = {{ cities | tojson | safe }};
-        handleCitiesData(citiesData);
+        var input = {{ input | tojson | safe }};
+        handleCitiesData(citiesData,input);
     </script>
 </body>
 </html>

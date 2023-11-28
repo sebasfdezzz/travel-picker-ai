@@ -1,7 +1,9 @@
 let chosen_city="New York";
 let cities_result = []; // Assuming this array is declared
+let global_input = ""
 
-function handleCitiesData(citiesData) {
+function handleCitiesData(citiesData,input) {
+    global_input = input;
     chosen_city = citiesData[0];
   citiesData.forEach(function (city) {
     cities_result.push(city);

@@ -14,10 +14,10 @@ async function submitForm() {
 
         if (processResponse.ok) {
             const processResult = await processResponse.json();
-
             const cities = processResult.result;
-            global_input = userInput;
-            window.location.href = '/result?cities=' + encodeURIComponent(JSON.stringify(cities));
+            const queryString = `?input=${encodeURIComponent(userInput)}&cities=${encodeURIComponent(JSON.stringify(cities))}`;
+
+            window.location.href = '/result' + queryString;
         } else {
             console.error('Error:', processResponse.status);
         }
