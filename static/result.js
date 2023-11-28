@@ -166,10 +166,10 @@ function goToKayak() {
 }
 
 
-function getGptReason() {
+function getGptReason(city) {
   // Display initial message with Google Font
   document.getElementById('reasonParagraph').style.fontFamily = 'Noto Sans Glagolitic, sans-serif';
-  document.getElementById('reasonParagraph').textContent = 'You should visit New York because ';
+  document.getElementById('reasonParagraph').textContent = 'You should visit '+ city +' because ';
 
   // Set up the loading animation
   let filler_text = 'ⰲⱐⱄⰻ ⰱⱁ ⰾⱓⰴⰻⰵ ⱃⱁⰴⱔⱅⱏ ⱄⱔ ⱄⰲⱁⰱⱁⰴⱐⱀⰻ ⰻ ⱃⰰⰲⱐⱀⰻ ⰲⱏ ⰴⱁⱄⱅⱁⰻⱀⱐⱄⱅⰲⱑ ⰻ ⰸⰰⰽⱁⱀⱑ· ⱁⱀⰻ ⱄⱘⱅⱏ ⱁⰴⰰⱃⰵⱀⰻ ⱃⰰⰸⱆⰿⱁⰿⱐ ⰻ ⱄⱏⰲⱑⰴⰻⱙ ⰻ ⰴⱏⰾⰶⱐⱀⰻ ⱄⱘⱅⱏ ⰴⱑⰰⱅⰻ ⰲⱏ ⰴⱆⱄⱑ ⰱⱃⰰⱅⱐⱄⱅⰲⰰ· ⰲⱐⱄⰻ ⰱⱁ ⰾⱓⰴⰻⰵ ⱃⱁⰴⱔⱅⱏ ⱄⱔ ⱄⰲⱁⰱⱁⰴⱐⱀⰻ ⰻ ⱃⰰⰲⱐⱀⰻ ⰲⱏ ⰴⱁⱄⱅⱁⰻⱀⱐⱄⱅⰲⱑ ⰻ ⰸⰰⰽⱁⱀⱑ· ⱁⱀⰻ ⱄⱘⱅⱏ ⱁⰴⰰⱃⰵⱀⰻ ⱃⰰⰸⱆⰿⱁⰿⱐ ⰻ ⱄⱏⰲⱑⰴⰻⱙ ⰻ ⰴⱏⰾⰶⱐⱀⰻ ⱄⱘⱅⱏ ⰴⱑⰰⱅⰻ ⰲⱏ ⰴⱆⱄⱑ ⰱⱃⰰⱅⱐⱄⱅⰲⰰ· ⰲⱐⱄⰻ ⰱⱁ ⰾⱓⰴⰻⰵ ⱃⱁⰴⱔⱅⱏ ⱄⱔ ⱄⰲⱁⰱⱁⰴⱐⱀⰻ ⰻ ⱃⰰⰲⱐⱀⰻ ⰲⱏ ⰴⱁⱄⱅⱁⰻⱀⱐⱄⱅⰲⱑ ⰻ ⰸⰰⰽⱁⱀⱑ· ⱁⱀⰻ ⱄⱘⱅⱏ ⱁⰴⰰⱃⰵⱀⰻ ⱃⰰⰸⱆⰿⱁⰿⱐ ⰻ ⱄⱏⰲⱑⰴⰻⱙ ⰻ ⰴⱏⰾⰶⱐⱀⰻ ⱄⱘⱅⱏ ⰴⱑⰰⱅⰻ ⰲⱏ ⰴⱆⱄⱑ ⰱⱃⰰⱅⱐⱄⱅⰲⰰ· ⰲⱐⱄⰻ ⰱⱁ ⰾⱓⰴⰻⰵ ⱃⱁⰴⱔⱅⱏ ⱄⱔ ⱄⰲⱁⰱⱁⰴⱐⱀⰻ ⰻ ⱃⰰⰲⱐⱀⰻ ⰲⱏ ⰴⱁⱄⱅⱁⰻⱀⱐⱄⱅⰲⱑ ⰻ ⰸⰰⰽⱁⱀⱑ· ⱁⱀⰻ ⱄⱘⱅⱏ ⱁⰴⰰⱃⰵⱀⰻ ⱃⰰⰸⱆⰿⱁⰿⱐ ⰻ ⱄⱏⰲⱑⰴⰻⱙ ⰻ ⰴⱏⰾⰶⱐⱀⰻ ⱄⱘⱅⱏ ⰴⱑⰰⱅⰻ ⰲⱏ ⰴⱆⱄⱑ ⰱⱃⰰⱅⱐⱄⱅⰲⰰ ⰲⱐⱄⰻ ⰱⱁ ⰾⱓⰴⰻⰵ ⱃⱁⰴⱔⱅⱏ ⱄⱔ ⱄⰲⱁⰱⱁⰴⱐⱀⰻ ⰻ ⱃⰰⰲⱐⱀⰻ ⰲⱏ ⰴⱁⱄⱅⱁⰻⱀⱐⱄⱅⰲⱑ ⰻ ⰸⰰⰽⱁⱀⱑ· ⱁⱀⰻ ⱄⱘⱅⱏ ⱁⰴⰰⱃⰵⱀⰻ ⱃⰰⰸⱆⰿⱁⰿⱐ ⰻ ⱄⱏⰲⱑⰴⰻⱙ ⰻ ⰴⱏⰾⰶⱐⱀⰻ ⱄⱘⱅⱏ ⰴⱑⰰⱅⰻ ⰲⱏ ⰴⱆⱄⱑ ⰱⱃⰰⱅⱐⱄⱅⰲⰰ· ⰲⱐⱄⰻ ⰱⱁ ⰾⱓⰴⰻⰵ ⱃⱁⰴⱔⱅⱏ ⱄⱔ ⱄⰲⱁⰱⱁⰴⱐⱀⰻ ⰻ ⱃⰰⰲⱐⱀⰻ ⰲⱏ ⰴⱁⱄⱅⱁⰻⱀⱐⱄⱅⰲⱑ ⰻ ⰸⰰⰽⱁⱀⱑ· ⱁⱀⰻ ⱄⱘⱅⱏ ⱁⰴⰰⱃⰵⱀⰻ ⱃⰰⰸⱆⰿⱁⰿⱐ ⰻ ⱄⱏⰲⱑⰴⰻⱙ ⰻ ⰴⱏⰾⰶⱐⱀⰻ ⱄⱘⱅⱏ ⰴⱑⰰⱅⰻ ⰲⱏ ⰴⱆⱄⱑ ⰱⱃⰰⱅⱐⱄⱅⰲⰰ· ⰲⱐⱄⰻ ⰱⱁ ⰾⱓⰴⰻⰵ ⱃⱁⰴⱔⱅⱏ ⱄⱔ ⱄⰲⱁⰱⱁⰴⱐⱀⰻ ⰻ ⱃⰰⰲⱐⱀⰻ ⰲⱏ ⰴⱁⱄⱅⱁⰻⱀⱐⱄⱅⰲⱑ ⰻ ⰸⰰⰽⱁⱀⱑ· ⱁⱀⰻ ⱄⱘⱅⱏ ⱁⰴⰰⱃⰵⱀⰻ ⱃⰰⰸⱆⰿⱁⰿⱐ ⰻ ⱄⱏⰲⱑⰴⰻⱙ ⰻ ⰴⱏⰾⰶⱐⱀⰻ ⱄⱘⱅⱏ ⰴⱑⰰⱅⰻ ⰲⱏ ⰴⱆⱄⱑ ⰱⱃⰰⱅⱐⱄⱅⰲⰰ· ⰲⱐⱄⰻ ⰱⱁ ⰾⱓⰴⰻⰵ ⱃⱁⰴⱔⱅⱏ ⱄⱔ ⱄⰲⱁⰱⱁⰴⱐⱀⰻ ⰻ ⱃⰰⰲⱐⱀⰻ ⰲⱏ ⰴⱁⱄⱅⱁⰻⱀⱐⱄⱅⰲⱑ ⰻ ⰸⰰⰽⱁⱀⱑ· ⱁⱀⰻ ⱄⱘⱅⱏ ⱁⰴⰰⱃⰵⱀⰻ ⱃⰰⰸⱆⰿⱁⰿⱐ ⰻ ⱄⱏⰲⱑⰴⰻⱙ ⰻ ⰴⱏⰾⰶⱐⱀⰻ ⱄⱘⱅⱏ ⰴⱑⰰⱅⰻ ⰲⱏ ⰴⱆⱄⱑ ⰱⱃⰰⱅⱐⱄⱅⰲⰰ';
@@ -178,7 +178,7 @@ function getGptReason() {
     // Add a letter to the current word
     let animatedText = filler_text.substring(0,i);
 
-    document.getElementById('reasonParagraph').textContent = 'You should visit New York because ' + animatedText;
+    document.getElementById('reasonParagraph').textContent = 'You should visit '+ city +' because ' + animatedText;
     i++
   }, 30); // Adjust the interval according to your preference
 
