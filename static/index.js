@@ -1,5 +1,5 @@
 console.log("hello world")
-
+let global_input = ""
 async function submitForm() {
     var userInput = document.getElementById('textInput').value;
 
@@ -26,4 +26,5 @@ async function submitForm() {
     }
 }
 
+module.exports = global_input;
 
