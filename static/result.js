@@ -192,7 +192,7 @@ function getGptReason() {
       currentWord = words[currentWordIndex];
       currentLetterIndex = 0;
     }
-  }, 150); // Adjust the interval according to your preference
+  }, 100); // Adjust the interval according to your preference
 
   fetch('/reason-to-go/', {
     method: 'POST',
