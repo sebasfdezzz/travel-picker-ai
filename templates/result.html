@@ -49,7 +49,7 @@
       <button onclick="goToKayak()">Buy Now</button>
     <script>
         var citiesData = {{ cities | tojson | safe }};
-        var input = {{ input | tojson | safe }};
+        var input = {{ input | safe }};
         handleCitiesData(citiesData,input);
     </script>
 </body>
