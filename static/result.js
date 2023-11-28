@@ -3,7 +3,7 @@ let cities_result = []; // Assuming this array is declared
 let global_input = ""
 
 function handleCitiesData(citiesData,input) {
-    global_input = input;
+    global_input = input[0];
     chosen_city = citiesData[0];
   citiesData.forEach(function (city) {
     cities_result.push(city);
