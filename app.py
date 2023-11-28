@@ -56,7 +56,7 @@ def process():
 @app.route('/get_image/<city>')
 def get_unsplash_image(city):
     temp_url='https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/310px-Placeholder_view_vector.svg.png'
-    return jsonify({'image_url': temp_url}) #comment for prodcution
+    #return jsonify({'image_url': temp_url}) #comment for prodcution
     access_key = '7iU8pHx9ol-FJexwDVFIgdhMpO-wxKVNk9tbKovW8PU'
     base_url = 'https://api.unsplash.com/search/photos/'
     params = {

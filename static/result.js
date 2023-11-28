@@ -166,24 +166,34 @@ function goToKayak() {
 }
 
 
-function getGptReason() {
+function getGptReason(city) {
+  document.getElementById('reasonParagraph').textContent = 'Crafitng why you definetly should visit '+city+'.';
 
-    fetch('/reason-to-go/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({city: chosen_city }),
-    })
+  let dots = 1;
+  const loadingInterval = setInterval(() => {
+    dots = (dots % 3) + 1;
+    document.getElementById('reasonParagraph').textContent = 'Crafitng why you definetly should visit '+city + '.'.repeat(dots);
+  }, 500);
+
+  fetch('/reason-to-go/', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ city: chosen_city }),
+  })
     .then(response => response.json())
     .then(data => {
-      // Update the content of the <p> element with the generated reason
+      clearInterval(loadingInterval);
+
       let content = data.generated_reason;
       document.getElementById('reasonParagraph').textContent = content;
     })
     .catch(error => {
+      clearInterval(loadingInterval);
+
       console.error('Error getting reason:', error);
-      // Handle error if needed
     });
-  }
+}
+
 
