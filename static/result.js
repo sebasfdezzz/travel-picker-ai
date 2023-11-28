@@ -178,7 +178,8 @@ function getGptReason() {
     .then(response => response.json())
     .then(data => {
       // Update the content of the <p> element with the generated reason
-      document.getElementById('reasonParagraph').textContent = data.generated_reason;
+      let content = data.generated_reason['choices'][0]['message']['content'];
+      document.getElementById('reasonParagraph').textContent = content;
     })
     .catch(error => {
       console.error('Error getting reason:', error);
