@@ -19,10 +19,10 @@ import random
 app = Flask(__name__)
 client = None
 
-client = OpenAI(
-    # defaults to os.environ.get("OPENAI_API_KEY")
-    api_key="My API Key",
-)
+# client = OpenAI(
+#     # defaults to os.environ.get("OPENAI_API_KEY")
+#     api_key="My API Key",
+# )
 gloabl_input=[""]
 
 @app.route('/')
