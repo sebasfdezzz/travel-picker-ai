@@ -3,10 +3,24 @@ let chosen_city="New York";
 let cities_result = []; // Assuming this array is declared
 
 function handleCitiesData(citiesData) {
+    chosen_city = citiesData[0];
   citiesData.forEach(function (city) {
     cities_result.push(city);
 
     getUnsplashImageAndUpdate(city);
+    getGptReason(chosen_city);
+        // Get all radio buttons with the name "position"
+        var radioButtons = document.querySelectorAll('input[name="position"]');
+
+        // Add a click event listener to each radio button
+        radioButtons.forEach(function (radio, index) {
+            radio.addEventListener('click', function () {
+                // The index variable contains the position (1-5) of the clicked radio button
+                console.log("Selected position: " + (index + 1));
+                chosen_city = cities_result[index];
+                getGptReason(chosen_city);
+            });
+        });
   });
 }
 
@@ -41,5 +55,26 @@ function goToKayak() {
     } else {
       console.error("Airport code not found for the chosen city");
     }
+}
+
+
+function getGptReason() {
+
+    fetch('/reason-to-go/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ input: global_input, city: chosen_city }),
+    })
+    .then(response => response.json())
+    .then(data => {
+      // Update the content of the <p> element with the generated reason
+      document.getElementById('reasonParagraph').textContent = data.generated_reason;
+    })
+    .catch(error => {
+      console.error('Error getting reason:', error);
+      // Handle error if needed
+    });
   }
 
