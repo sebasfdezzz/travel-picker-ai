@@ -1,14 +1,3 @@
-def getCity(text):
-    return ['New York','Amsterdam','Rome','London','Madrid']
-
-
-
-
-
-
-
-
-
 from flask import Flask, render_template, request, jsonify
 import sys
 import json
@@ -17,11 +6,20 @@ import requests
 import random
 import time 
 
+#list of cities to link the neuron number to city
+def getCities(text):
+    #load pickle
+    #predict with model with text
+    #get top 5 neurons
+    #create result_list with cities_list[neuron1,neuron2,neuron3,neuron4,neuron5]
+    #return result_list
+
+    return ['New York','Amsterdam','Rome','London','Madrid']
+
 app = Flask(__name__)
 client = None
 
 client = OpenAI(
-    # defaults to os.environ.get("OPENAI_API_KEY")
     api_key="My API Key",
 )
 gloabl_input=[""]
@@ -48,7 +46,7 @@ def process():
         input_text = data.get('input')
         gloabl_input[0] = input_text
 
-        result = getCity(input_text)
+        result = getCities(input_text)
 
         return jsonify(result=result)
     except Exception as e:

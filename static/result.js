@@ -167,20 +167,17 @@ function goToKayak() {
 
 
 function getGptReason(city) {
-  // Display initial message with Google Font
   document.getElementById('reasonParagraph').style.fontFamily = 'Noto Sans Glagolitic, sans-serif';
   document.getElementById('reasonParagraph').textContent = 'You should visit '+ city +' because ';
 
-  // Set up the loading animation
   let filler_text = 'ⰲⱐⱄⰻ ⰱⱁ ⰾⱓⰴⰻⰵ ⱃⱁⰴⱔⱅⱏ ⱄⱔ ⱄⰲⱁⰱⱁⰴⱐⱀⰻ ⰻ ⱃⰰⰲⱐⱀⰻ ⰲⱏ ⰴⱁⱄⱅⱁⰻⱀⱐⱄⱅⰲⱑ ⰻ ⰸⰰⰽⱁⱀⱑ· ⱁⱀⰻ ⱄⱘⱅⱏ ⱁⰴⰰⱃⰵⱀⰻ ⱃⰰⰸⱆⰿⱁⰿⱐ ⰻ ⱄⱏⰲⱑⰴⰻⱙ ⰻ ⰴⱏⰾⰶⱐⱀⰻ ⱄⱘⱅⱏ ⰴⱑⰰⱅⰻ ⰲⱏ ⰴⱆⱄⱑ ⰱⱃⰰⱅⱐⱄⱅⰲⰰ· ⰲⱐⱄⰻ ⰱⱁ ⰾⱓⰴⰻⰵ ⱃⱁⰴⱔⱅⱏ ⱄⱔ ⱄⰲⱁⰱⱁⰴⱐⱀⰻ ⰻ ⱃⰰⰲⱐⱀⰻ ⰲⱏ ⰴⱁⱄⱅⱁⰻⱀⱐⱄⱅⰲⱑ ⰻ ⰸⰰⰽⱁⱀⱑ· ⱁⱀⰻ ⱄⱘⱅⱏ ⱁⰴⰰⱃⰵⱀⰻ ⱃⰰⰸⱆⰿⱁⰿⱐ ⰻ ⱄⱏⰲⱑⰴⰻⱙ ⰻ ⰴⱏⰾⰶⱐⱀⰻ ⱄⱘⱅⱏ ⰴⱑⰰⱅⰻ ⰲⱏ ⰴⱆⱄⱑ ⰱⱃⰰⱅⱐⱄⱅⰲⰰ· ⰲⱐⱄⰻ ⰱⱁ ⰾⱓⰴⰻⰵ ⱃⱁⰴⱔⱅⱏ ⱄⱔ ⱄⰲⱁⰱⱁⰴⱐⱀⰻ ⰻ ⱃⰰⰲⱐⱀⰻ ⰲⱏ ⰴⱁⱄⱅⱁⰻⱀⱐⱄⱅⰲⱑ ⰻ ⰸⰰⰽⱁⱀⱑ· ⱁⱀⰻ ⱄⱘⱅⱏ ⱁⰴⰰⱃⰵⱀⰻ ⱃⰰⰸⱆⰿⱁⰿⱐ ⰻ ⱄⱏⰲⱑⰴⰻⱙ ⰻ ⰴⱏⰾⰶⱐⱀⰻ ⱄⱘⱅⱏ ⰴⱑⰰⱅⰻ ⰲⱏ ⰴⱆⱄⱑ ⰱⱃⰰⱅⱐⱄⱅⰲⰰ· ⰲⱐⱄⰻ ⰱⱁ ⰾⱓⰴⰻⰵ ⱃⱁⰴⱔⱅⱏ ⱄⱔ ⱄⰲⱁⰱⱁⰴⱐⱀⰻ ⰻ ⱃⰰⰲⱐⱀⰻ ⰲⱏ ⰴⱁⱄⱅⱁⰻⱀⱐⱄⱅⰲⱑ ⰻ ⰸⰰⰽⱁⱀⱑ· ⱁⱀⰻ ⱄⱘⱅⱏ ⱁⰴⰰⱃⰵⱀⰻ ⱃⰰⰸⱆⰿⱁⰿⱐ ⰻ ⱄⱏⰲⱑⰴⰻⱙ ⰻ ⰴⱏⰾⰶⱐⱀⰻ ⱄⱘⱅⱏ ⰴⱑⰰⱅⰻ ⰲⱏ ⰴⱆⱄⱑ ⰱⱃⰰⱅⱐⱄⱅⰲⰰ ⰲⱐⱄⰻ ⰱⱁ ⰾⱓⰴⰻⰵ ⱃⱁⰴⱔⱅⱏ ⱄⱔ ⱄⰲⱁⰱⱁⰴⱐⱀⰻ ⰻ ⱃⰰⰲⱐⱀⰻ ⰲⱏ ⰴⱁⱄⱅⱁⰻⱀⱐⱄⱅⰲⱑ ⰻ ⰸⰰⰽⱁⱀⱑ· ⱁⱀⰻ ⱄⱘⱅⱏ ⱁⰴⰰⱃⰵⱀⰻ ⱃⰰⰸⱆⰿⱁⰿⱐ ⰻ ⱄⱏⰲⱑⰴⰻⱙ ⰻ ⰴⱏⰾⰶⱐⱀⰻ ⱄⱘⱅⱏ ⰴⱑⰰⱅⰻ ⰲⱏ ⰴⱆⱄⱑ ⰱⱃⰰⱅⱐⱄⱅⰲⰰ· ⰲⱐⱄⰻ ⰱⱁ ⰾⱓⰴⰻⰵ ⱃⱁⰴⱔⱅⱏ ⱄⱔ ⱄⰲⱁⰱⱁⰴⱐⱀⰻ ⰻ ⱃⰰⰲⱐⱀⰻ ⰲⱏ ⰴⱁⱄⱅⱁⰻⱀⱐⱄⱅⰲⱑ ⰻ ⰸⰰⰽⱁⱀⱑ· ⱁⱀⰻ ⱄⱘⱅⱏ ⱁⰴⰰⱃⰵⱀⰻ ⱃⰰⰸⱆⰿⱁⰿⱐ ⰻ ⱄⱏⰲⱑⰴⰻⱙ ⰻ ⰴⱏⰾⰶⱐⱀⰻ ⱄⱘⱅⱏ ⰴⱑⰰⱅⰻ ⰲⱏ ⰴⱆⱄⱑ ⰱⱃⰰⱅⱐⱄⱅⰲⰰ· ⰲⱐⱄⰻ ⰱⱁ ⰾⱓⰴⰻⰵ ⱃⱁⰴⱔⱅⱏ ⱄⱔ ⱄⰲⱁⰱⱁⰴⱐⱀⰻ ⰻ ⱃⰰⰲⱐⱀⰻ ⰲⱏ ⰴⱁⱄⱅⱁⰻⱀⱐⱄⱅⰲⱑ ⰻ ⰸⰰⰽⱁⱀⱑ· ⱁⱀⰻ ⱄⱘⱅⱏ ⱁⰴⰰⱃⰵⱀⰻ ⱃⰰⰸⱆⰿⱁⰿⱐ ⰻ ⱄⱏⰲⱑⰴⰻⱙ ⰻ ⰴⱏⰾⰶⱐⱀⰻ ⱄⱘⱅⱏ ⰴⱑⰰⱅⰻ ⰲⱏ ⰴⱆⱄⱑ ⰱⱃⰰⱅⱐⱄⱅⰲⰰ· ⰲⱐⱄⰻ ⰱⱁ ⰾⱓⰴⰻⰵ ⱃⱁⰴⱔⱅⱏ ⱄⱔ ⱄⰲⱁⰱⱁⰴⱐⱀⰻ ⰻ ⱃⰰⰲⱐⱀⰻ ⰲⱏ ⰴⱁⱄⱅⱁⰻⱀⱐⱄⱅⰲⱑ ⰻ ⰸⰰⰽⱁⱀⱑ· ⱁⱀⰻ ⱄⱘⱅⱏ ⱁⰴⰰⱃⰵⱀⰻ ⱃⰰⰸⱆⰿⱁⰿⱐ ⰻ ⱄⱏⰲⱑⰴⰻⱙ ⰻ ⰴⱏⰾⰶⱐⱀⰻ ⱄⱘⱅⱏ ⰴⱑⰰⱅⰻ ⰲⱏ ⰴⱆⱄⱑ ⰱⱃⰰⱅⱐⱄⱅⰲⰰ';
   let i=0;
   const loadingInterval = setInterval(() => {
-    // Add a letter to the current word
     let animatedText = filler_text.substring(0,i);
 
     document.getElementById('reasonParagraph').textContent = 'You should visit '+ city +' because ' + animatedText;
     i++
-  }, 30); // Adjust the interval according to your preference
+  }, 30);
 
   fetch('/reason-to-go/', {
     method: 'POST',
@@ -191,24 +188,15 @@ function getGptReason(city) {
   })
     .then(response => response.json())
     .then(data => {
-      // Clear the loading message and stop the loading animation
       clearInterval(loadingInterval);
-
-      // Update the content of the <p> element with the generated reason
       let content = data.generated_reason;
       document.getElementById('reasonParagraph').textContent = content;
-
-      // Return to normal font
       document.getElementById('reasonParagraph').style.fontFamily = 'sans-serif';
     })
     .catch(error => {
-      // Clear the loading message and stop the loading animation
       clearInterval(loadingInterval);
-
       console.error('Error getting reason:', error);
-      // Handle error if needed
-
-      // Return to normal font
+      document.getElementById('reasonParagraph').textContent = "There was an error loading this part :( but you should definetly goooo!!";
       document.getElementById('reasonParagraph').style.fontFamily = 'sans-serif';
     });
 }
