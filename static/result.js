@@ -158,8 +158,8 @@ function updateImageAndLabel(city, imageUrl) {
 function goToKayak() {
     if (airports.hasOwnProperty(chosen_city)) {
       let kayakLink = `https://www.kayak.com.mx/flights/MEX-${airports[chosen_city]}/2024-01-01/2024-01-31-flexible-calendar-6to8?sort=bestflight_a`;
-      
-      window.location.href = kayakLink;
+      // Open the Kayak link in a new tab
+      window.open(kayakLink, '_blank');
     } else {
       console.error("Airport code not found for the chosen city");
     }
