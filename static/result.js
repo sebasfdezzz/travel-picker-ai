@@ -166,14 +166,33 @@ function goToKayak() {
 }
 
 
-function getGptReason(city) {
-  document.getElementById('reasonParagraph').textContent = 'Crafitng why you definetly should visit '+city+'.';
+function getGptReason() {
+  // Display initial message
+  document.getElementById('reasonParagraph').textContent = 'You should visit New York because ';
 
-  let dots = 1;
+  // Set up the loading animation
+  let words = ['amazing', 'exciting', 'unforgettable', 'vibrant', 'captivating'];
+  let currentWordIndex = 0;
+  let currentWord = words[currentWordIndex];
+  let currentLetterIndex = 0;
+
   const loadingInterval = setInterval(() => {
-    dots = (dots % 3) + 1;
-    document.getElementById('reasonParagraph').textContent = 'Crafitng why you definetly should visit '+city + '.'.repeat(dots);
-  }, 500);
+    // Add a letter to the current word
+    let animatedText = currentWord.substr(0, currentLetterIndex + 1);
+    // Add the rest of the words
+    animatedText += ' ' + words.slice(currentWordIndex + 1).join(' ');
+
+    document.getElementById('reasonParagraph').textContent = 'You should visit New York because ' + animatedText;
+
+    currentLetterIndex++;
+
+    // If the word is complete, move to the next word
+    if (currentLetterIndex > currentWord.length) {
+      currentWordIndex = (currentWordIndex + 1) % words.length;
+      currentWord = words[currentWordIndex];
+      currentLetterIndex = 0;
+    }
+  }, 150); // Adjust the interval according to your preference
 
   fetch('/reason-to-go/', {
     method: 'POST',
@@ -184,16 +203,23 @@ function getGptReason(city) {
   })
     .then(response => response.json())
     .then(data => {
+      // Clear the loading message and stop the loading animation
       clearInterval(loadingInterval);
 
+      // Update the content of the <p> element with the generated reason
       let content = data.generated_reason;
-      document.getElementById('reasonParagraph').textContent = content;
+
+      document.getElementById('reasonParagraph').textContent = 'You should visit New York because ' + content;
+      document.getElementById('reasonParagraph').style.fontFamily = 'sans-serif';
     })
     .catch(error => {
+      // Clear the loading message and stop the loading animation
       clearInterval(loadingInterval);
 
       console.error('Error getting reason:', error);
+      // Handle error if needed
     });
 }
+
 
 
