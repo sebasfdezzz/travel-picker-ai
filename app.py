@@ -12,7 +12,7 @@ def getCity(text):
 from flask import Flask, render_template, request, jsonify
 import sys
 import json
-from openai import OpenAI
+import openai
 import requests
 import random 
 
@@ -93,15 +93,16 @@ def get_gpt_reason():
 
         prompt = f'Tell me why {city} is a good place to go given a person is looking for a place to vacation and this is their input: {input_text}'
 
-        chat_completion = client.chat.completions.create(
-            messages=[
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages = [
                 {
                     "role": "user",
-                    "content": prompt,
+                    "content": prompt
                 }
             ],
-            model="gpt-3.5-turbo",
         )
+        print(response)
 
         generated_reason = response.choices[0].message.strip()
 
@@ -121,10 +122,7 @@ if __name__ == '__main__':
     try:
         with open(key_file_path, 'r') as key_file:
             openai_key = key_file.read().strip()
-            client = OpenAI(
-                # defaults to os.environ.get("OPENAI_API_KEY")
-                api_key=openai_key,
-            )
+            openai.api_key = openai_key
     except FileNotFoundError:
         print(f"Error: Key file not found at {key_file_path}")
         sys.exit(1)
