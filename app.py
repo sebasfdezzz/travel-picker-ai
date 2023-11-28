@@ -12,17 +12,17 @@ def getCity(text):
 from flask import Flask, render_template, request, jsonify
 import sys
 import json
-import openai
+from openai import OpenAI
 import requests
 import random 
 
 app = Flask(__name__)
 client = None
 
-# client = OpenAI(
-#     # defaults to os.environ.get("OPENAI_API_KEY")
-#     api_key="My API Key",
-# )
+client = OpenAI(
+    # defaults to os.environ.get("OPENAI_API_KEY")
+    api_key="My API Key",
+)
 gloabl_input=[""]
 
 @app.route('/')
@@ -55,6 +55,8 @@ def process():
 
 @app.route('/get_image/<city>')
 def get_unsplash_image(city):
+    temp_url='https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/310px-Placeholder_view_vector.svg.png'
+    return jsonify({'image_url': temp_url}) #comment for prodcution
     access_key = '7iU8pHx9ol-FJexwDVFIgdhMpO-wxKVNk9tbKovW8PU'
     base_url = 'https://api.unsplash.com/search/photos/'
     params = {
@@ -93,18 +95,18 @@ def get_gpt_reason():
 
         prompt = f'Tell me why {city} is a good place to go given a person is looking for a place to vacation and this is their input: {input_text}'
 
-        response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
-            messages = [
+        chat_completion = client.chat.completions.create(
+            messages=[
                 {
                     "role": "user",
-                    "content": prompt
+                    "content": prompt,
                 }
             ],
+            model="gpt-3.5-turbo",
         )
-        print(response)
+        print(chat_completion)
 
-        generated_reason = response.choices[0].message.strip()
+        generated_reason = chat_completion
 
         return jsonify({'generated_reason': generated_reason})
     except Exception as e:
@@ -122,7 +124,9 @@ if __name__ == '__main__':
     try:
         with open(key_file_path, 'r') as key_file:
             openai_key = key_file.read().strip()
-            openai.api_key = openai_key
+            client = OpenAI(
+                api_key=openai_key,
+            )
     except FileNotFoundError:
         print(f"Error: Key file not found at {key_file_path}")
         sys.exit(1)
