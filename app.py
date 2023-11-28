@@ -4,7 +4,114 @@ import json
 from openai import OpenAI
 import requests
 import random
-import time 
+import time
+import subprocess
+import pandas as pd
+from sklearn.feature_extraction.text import TfidfTransformer
+from sklearn.feature_extraction.text import CountVectorizer
+import nltk
+from nltk.corpus import stopwords
+import numpy
+import tensorflow
+import random
+import json
+#Generar la matriz de entrada
+from keras.preprocessing.text import Tokenizer
+from keras_preprocessing.sequence import pad_sequences
+from numpy import asarray
+from numpy import zeros
+from keras.models import Sequential
+from keras.layers.core import Dense
+from keras.layers import DNN
+from keras.layers import Embedding
+from keras.utils.np_utils import to_categorical
+import pickle
+
+
+
+train_model_bool = False
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #list of cities to link the neuron number to city
 def getCities(text):
