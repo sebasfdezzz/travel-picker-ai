@@ -93,7 +93,7 @@ height: 300px;
 --r) * -1), var(--r));
 transition: all 0.25s linear;
 transform: rotateY(calc(-10deg * var(--r)))
-  translateX(calc(-130px * var(--r)));
+  translateX(calc(-200px * var(--r)));
 z-index: calc((var(--position) - var(--abs)));
 }
 
