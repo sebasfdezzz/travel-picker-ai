@@ -165,7 +165,7 @@ def getDate(): #Reconocimiento de entidades de tiempo para fechas de vuelos
                 for entity in entities:
                     if entity in input_text:
                         return time_entities[entity_type][entity]
-        return "2024-01-01" 
+        return "2024-01-01"
     except Exception as e:
         return "2024-01-01"
 
