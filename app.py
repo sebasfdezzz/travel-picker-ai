@@ -137,3 +137,5 @@ if __name__ == '__main__':
     # Use the openai_key as needed in your application
     print(f"Using OpenAI key from {key_file_path}: {openai_key}")
     app.run(host='0.0.0.0',port=3003)
+
+    

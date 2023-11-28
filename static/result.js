@@ -172,36 +172,15 @@ function getGptReason() {
   document.getElementById('reasonParagraph').textContent = 'You should visit New York because ';
 
   // Set up the loading animation
-  let words = ['amazing', 'exciting', 'unforgettable', 'vibrant', 'captivating'];
-  let currentWordIndex = 0;
-  let currentWord = words[currentWordIndex];
-  let currentLetterIndex = 0;
-
+  let filler_text = 'ⰲⱐⱄⰻ ⰱⱁ ⰾⱓⰴⰻⰵ ⱃⱁⰴⱔⱅⱏ ⱄⱔ ⱄⰲⱁⰱⱁⰴⱐⱀⰻ ⰻ ⱃⰰⰲⱐⱀⰻ ⰲⱏ ⰴⱁⱄⱅⱁⰻⱀⱐⱄⱅⰲⱑ ⰻ ⰸⰰⰽⱁⱀⱑ· ⱁⱀⰻ ⱄⱘⱅⱏ ⱁⰴⰰⱃⰵⱀⰻ ⱃⰰⰸⱆⰿⱁⰿⱐ ⰻ ⱄⱏⰲⱑⰴⰻⱙ ⰻ ⰴⱏⰾⰶⱐⱀⰻ ⱄⱘⱅⱏ ⰴⱑⰰⱅⰻ ⰲⱏ ⰴⱆⱄⱑ ⰱⱃⰰⱅⱐⱄⱅⰲⰰ· ⰲⱐⱄⰻ ⰱⱁ ⰾⱓⰴⰻⰵ ⱃⱁⰴⱔⱅⱏ ⱄⱔ ⱄⰲⱁⰱⱁⰴⱐⱀⰻ ⰻ ⱃⰰⰲⱐⱀⰻ ⰲⱏ ⰴⱁⱄⱅⱁⰻⱀⱐⱄⱅⰲⱑ ⰻ ⰸⰰⰽⱁⱀⱑ· ⱁⱀⰻ ⱄⱘⱅⱏ ⱁⰴⰰⱃⰵⱀⰻ ⱃⰰⰸⱆⰿⱁⰿⱐ ⰻ ⱄⱏⰲⱑⰴⰻⱙ ⰻ ⰴⱏⰾⰶⱐⱀⰻ ⱄⱘⱅⱏ ⰴⱑⰰⱅⰻ ⰲⱏ ⰴⱆⱄⱑ ⰱⱃⰰⱅⱐⱄⱅⰲⰰ· ⰲⱐⱄⰻ ⰱⱁ ⰾⱓⰴⰻⰵ ⱃⱁⰴⱔⱅⱏ ⱄⱔ ⱄⰲⱁⰱⱁⰴⱐⱀⰻ ⰻ ⱃⰰⰲⱐⱀⰻ ⰲⱏ ⰴⱁⱄⱅⱁⰻⱀⱐⱄⱅⰲⱑ ⰻ ⰸⰰⰽⱁⱀⱑ· ⱁⱀⰻ ⱄⱘⱅⱏ ⱁⰴⰰⱃⰵⱀⰻ ⱃⰰⰸⱆⰿⱁⰿⱐ ⰻ ⱄⱏⰲⱑⰴⰻⱙ ⰻ ⰴⱏⰾⰶⱐⱀⰻ ⱄⱘⱅⱏ ⰴⱑⰰⱅⰻ ⰲⱏ ⰴⱆⱄⱑ ⰱⱃⰰⱅⱐⱄⱅⰲⰰ· ⰲⱐⱄⰻ ⰱⱁ ⰾⱓⰴⰻⰵ ⱃⱁⰴⱔⱅⱏ ⱄⱔ ⱄⰲⱁⰱⱁⰴⱐⱀⰻ ⰻ ⱃⰰⰲⱐⱀⰻ ⰲⱏ ⰴⱁⱄⱅⱁⰻⱀⱐⱄⱅⰲⱑ ⰻ ⰸⰰⰽⱁⱀⱑ· ⱁⱀⰻ ⱄⱘⱅⱏ ⱁⰴⰰⱃⰵⱀⰻ ⱃⰰⰸⱆⰿⱁⰿⱐ ⰻ ⱄⱏⰲⱑⰴⰻⱙ ⰻ ⰴⱏⰾⰶⱐⱀⰻ ⱄⱘⱅⱏ ⰴⱑⰰⱅⰻ ⰲⱏ ⰴⱆⱄⱑ ⰱⱃⰰⱅⱐⱄⱅⰲⰰ ⰲⱐⱄⰻ ⰱⱁ ⰾⱓⰴⰻⰵ ⱃⱁⰴⱔⱅⱏ ⱄⱔ ⱄⰲⱁⰱⱁⰴⱐⱀⰻ ⰻ ⱃⰰⰲⱐⱀⰻ ⰲⱏ ⰴⱁⱄⱅⱁⰻⱀⱐⱄⱅⰲⱑ ⰻ ⰸⰰⰽⱁⱀⱑ· ⱁⱀⰻ ⱄⱘⱅⱏ ⱁⰴⰰⱃⰵⱀⰻ ⱃⰰⰸⱆⰿⱁⰿⱐ ⰻ ⱄⱏⰲⱑⰴⰻⱙ ⰻ ⰴⱏⰾⰶⱐⱀⰻ ⱄⱘⱅⱏ ⰴⱑⰰⱅⰻ ⰲⱏ ⰴⱆⱄⱑ ⰱⱃⰰⱅⱐⱄⱅⰲⰰ· ⰲⱐⱄⰻ ⰱⱁ ⰾⱓⰴⰻⰵ ⱃⱁⰴⱔⱅⱏ ⱄⱔ ⱄⰲⱁⰱⱁⰴⱐⱀⰻ ⰻ ⱃⰰⰲⱐⱀⰻ ⰲⱏ ⰴⱁⱄⱅⱁⰻⱀⱐⱄⱅⰲⱑ ⰻ ⰸⰰⰽⱁⱀⱑ· ⱁⱀⰻ ⱄⱘⱅⱏ ⱁⰴⰰⱃⰵⱀⰻ ⱃⰰⰸⱆⰿⱁⰿⱐ ⰻ ⱄⱏⰲⱑⰴⰻⱙ ⰻ ⰴⱏⰾⰶⱐⱀⰻ ⱄⱘⱅⱏ ⰴⱑⰰⱅⰻ ⰲⱏ ⰴⱆⱄⱑ ⰱⱃⰰⱅⱐⱄⱅⰲⰰ· ⰲⱐⱄⰻ ⰱⱁ ⰾⱓⰴⰻⰵ ⱃⱁⰴⱔⱅⱏ ⱄⱔ ⱄⰲⱁⰱⱁⰴⱐⱀⰻ ⰻ ⱃⰰⰲⱐⱀⰻ ⰲⱏ ⰴⱁⱄⱅⱁⰻⱀⱐⱄⱅⰲⱑ ⰻ ⰸⰰⰽⱁⱀⱑ· ⱁⱀⰻ ⱄⱘⱅⱏ ⱁⰴⰰⱃⰵⱀⰻ ⱃⰰⰸⱆⰿⱁⰿⱐ ⰻ ⱄⱏⰲⱑⰴⰻⱙ ⰻ ⰴⱏⰾⰶⱐⱀⰻ ⱄⱘⱅⱏ ⰴⱑⰰⱅⰻ ⰲⱏ ⰴⱆⱄⱑ ⰱⱃⰰⱅⱐⱄⱅⰲⰰ· ⰲⱐⱄⰻ ⰱⱁ ⰾⱓⰴⰻⰵ ⱃⱁⰴⱔⱅⱏ ⱄⱔ ⱄⰲⱁⰱⱁⰴⱐⱀⰻ ⰻ ⱃⰰⰲⱐⱀⰻ ⰲⱏ ⰴⱁⱄⱅⱁⰻⱀⱐⱄⱅⰲⱑ ⰻ ⰸⰰⰽⱁⱀⱑ· ⱁⱀⰻ ⱄⱘⱅⱏ ⱁⰴⰰⱃⰵⱀⰻ ⱃⰰⰸⱆⰿⱁⰿⱐ ⰻ ⱄⱏⰲⱑⰴⰻⱙ ⰻ ⰴⱏⰾⰶⱐⱀⰻ ⱄⱘⱅⱏ ⰴⱑⰰⱅⰻ ⰲⱏ ⰴⱆⱄⱑ ⰱⱃⰰⱅⱐⱄⱅⰲⰰ';
+  let i=0;
   const loadingInterval = setInterval(() => {
     // Add a letter to the current word
-    let animatedText = currentWord.substr(0, currentLetterIndex + 1);
-
-    // Add the rest of the words
-    for (let i = currentWordIndex + 1; i < words.length; i++) {
-      animatedText += ' ' + words[i];
-    }
+    let animatedText = filler_text.substring(0,i);
 
     document.getElementById('reasonParagraph').textContent = 'You should visit New York because ' + animatedText;
-
-    currentLetterIndex++;
-
-    // If the word is complete, move to the next word
-    if (currentLetterIndex > currentWord.length) {
-      currentWordIndex = (currentWordIndex + 1) % words.length;
-      currentWord = words[currentWordIndex];
-      currentLetterIndex = 0;
-    }
-
-    // If all words are done, start over
-    if (currentWordIndex === 0 && currentLetterIndex === 0) {
-      animatedText = '';
-    }
-  }, 40); // Adjust the interval according to your preference
+    i++
+  }, 30); // Adjust the interval according to your preference
 
   fetch('/reason-to-go/', {
     method: 'POST',

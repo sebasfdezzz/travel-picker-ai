@@ -15,7 +15,7 @@ async function submitForm() {
         if (processResponse.ok) {
             const processResult = await processResponse.json();
             const cities = processResult.result;
-            const queryString = `?inputt=${encodeURIComponent(JSON.stringify([userInput,"nan"]))}&cities=${encodeURIComponent(JSON.stringify(cities))}`;
+            const queryString = `?cities=${encodeURIComponent(JSON.stringify(cities))}`;
             window.location.href = '/result' + queryString;
         } else {
             console.error('Error:', processResponse.status);
