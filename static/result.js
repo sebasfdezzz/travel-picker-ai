@@ -1,11 +1,9 @@
 let chosen_city="New York";
 let cities_result = []; // Assuming this array is declared
-let global_input = ""
 
-function handleCitiesData(citiesData,input) {
-    global_input = input[0];
+function handleCitiesData(citiesData) {
     chosen_city = citiesData[0];
-  citiesData.forEach(function (city) {
+    citiesData.forEach(function (city) {
     cities_result.push(city);
 
     getUnsplashImageAndUpdate(city);
@@ -66,7 +64,7 @@ function getGptReason() {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ input: global_input, city: chosen_city }),
+      body: JSON.stringify({city: chosen_city }),
     })
     .then(response => response.json())
     .then(data => {

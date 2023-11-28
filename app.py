@@ -19,6 +19,7 @@ import random
 app = Flask(__name__)
 
 openai.api_key = ''
+gloabl_input=[""]
 
 @app.route('/')
 def index():
@@ -40,6 +41,7 @@ def process():
     try:
         data = request.get_json()
         input_text = data.get('input')
+        gloabl_input[0] = input_text
 
         result = getCity(input_text)
 
@@ -79,7 +81,7 @@ def get_unsplash_image(city):
 def get_gpt_reason():
     try:
         data = request.get_json()
-        input_text = data.get('input', '')
+        input_text = gloabl_input[0]
         city = data.get('city', '')
 
         if not input_text or not city:
