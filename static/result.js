@@ -167,7 +167,8 @@ function goToKayak() {
 
 
 function getGptReason() {
-  // Display initial message
+  // Display initial message with Google Font
+  document.getElementById('reasonParagraph').style.fontFamily = 'Noto Sans Glagolitic, sans-serif';
   document.getElementById('reasonParagraph').textContent = 'You should visit New York because ';
 
   // Set up the loading animation
@@ -179,8 +180,11 @@ function getGptReason() {
   const loadingInterval = setInterval(() => {
     // Add a letter to the current word
     let animatedText = currentWord.substr(0, currentLetterIndex + 1);
+
     // Add the rest of the words
-    animatedText += ' ' + words.slice(currentWordIndex + 1).join(' ');
+    for (let i = currentWordIndex + 1; i < words.length; i++) {
+      animatedText += ' ' + words[i];
+    }
 
     document.getElementById('reasonParagraph').textContent = 'You should visit New York because ' + animatedText;
 
@@ -192,7 +196,12 @@ function getGptReason() {
       currentWord = words[currentWordIndex];
       currentLetterIndex = 0;
     }
-  }, 100); // Adjust the interval according to your preference
+
+    // If all words are done, start over
+    if (currentWordIndex === 0 && currentLetterIndex === 0) {
+      animatedText = '';
+    }
+  }, 40); // Adjust the interval according to your preference
 
   fetch('/reason-to-go/', {
     method: 'POST',
@@ -208,8 +217,9 @@ function getGptReason() {
 
       // Update the content of the <p> element with the generated reason
       let content = data.generated_reason;
+      document.getElementById('reasonParagraph').textContent = content;
 
-      document.getElementById('reasonParagraph').textContent = 'You should visit New York because ' + content;
+      // Return to normal font
       document.getElementById('reasonParagraph').style.fontFamily = 'sans-serif';
     })
     .catch(error => {
@@ -218,8 +228,9 @@ function getGptReason() {
 
       console.error('Error getting reason:', error);
       // Handle error if needed
+
+      // Return to normal font
+      document.getElementById('reasonParagraph').style.fontFamily = 'sans-serif';
     });
 }
-
-
 
