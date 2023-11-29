@@ -15,7 +15,7 @@ import numpy
 import tensorflow
 import random
 import json
-from keras.preprocessing.text import Tokenizer
+from keras.preprocessing.text import Tokenizer, tokenizer_from_json 
 from keras_preprocessing.sequence import pad_sequences
 from numpy import asarray
 from numpy import zeros
@@ -156,7 +156,7 @@ else:
     # Load the tokenizer
     with open(tokenizer_path, 'r', encoding='utf-8') as f:
         loaded_tokenizer_json = f.read()
-        tokenizer_Examples = Tokenizer.from_json(loaded_tokenizer_json)
+        tokenizer_Examples = tokenizer_from_json(loaded_tokenizer_json)
 
 X_Examples_Tok = tokenizer_Examples.texts_to_sequences(X_Examples)
 X_Examples_train = pad_sequences(X_Examples_Tok, padding='post', maxlen=maxlen)
