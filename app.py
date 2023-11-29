@@ -23,7 +23,7 @@ from numpy import zeros
 from keras.models import Sequential
 from tensorflow.keras.utils import to_categorical
 from keras.models import Sequential
-from tensorflow.keras.layers import Embedding, Flatten, Dense
+from tensorflow.keras.layers import Embedding, Flatten, Dense, Dropout
 import pickle
 from keras.models import load_model
 
