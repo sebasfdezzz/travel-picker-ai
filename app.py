@@ -131,7 +131,7 @@ for city, examples in examples_by_city.items():
     for ex in examples:
         Y_Examples.append(list(examples_by_city.keys()).index(city))
 print("Vector de salidas Y para Examples by city")
-print(Y_Examples)
+print(str(Y_Examples))
 
 X_Examples = list()
 for lista in examples_by_city.values():
