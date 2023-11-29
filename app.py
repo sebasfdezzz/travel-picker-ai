@@ -127,9 +127,9 @@ for city, top_words in top_words_by_city.items():
 
 Y_Examples = list()
 
-for clase, lista_textos in examples_by_city.items():
-    for text in lista_textos:
-        Y_Examples.append(list(examples_by_city.keys()).index(clase))
+for city, examples in examples_by_city.items():
+    for ex in examples:
+        Y_Examples.append(list(examples_by_city.keys()).index(city))
 print("Vector de salidas Y para Examples by city")
 print(Y_Examples)
 
