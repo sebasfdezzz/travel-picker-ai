@@ -40,10 +40,11 @@ from keras.models import load_model
 
 
 
-train_model_bool = False
+train_model_bool = True
 file_name_model = 'DNN_model_3.h5'
-dev_mode=False
-examples_length=60
+dev_mode=True
+examples_length=50
+num_examples = 3
 
 
 
@@ -108,7 +109,6 @@ for city in city_names:
 for city, top_words in top_words_by_city.items():
     print(f"Top words for {city}: {', '.join(top_words)}")
 
-num_examples = 50# Number of example sentences to generate for each city
 #words_per_example = 100
 examples_by_city ={}
 
