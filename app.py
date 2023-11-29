@@ -137,7 +137,7 @@ X_Examples = list()
 for lista in examples_by_city.values():
     for texto in lista:
         X_Examples.append(texto)
-print(X_Examples)
+#print(X_Examples)
 
 #Generar la matriz de entrada
 
@@ -339,7 +339,8 @@ def getCities(input_text):
 
     # Predict using the model
     predictions = model.predict(np.array(padded_sequences))
-
+    print('prediction result: ')
+    print(str(predictions))
     # Get the top 5 neurons
     top_neurons = np.argsort(predictions[0])[-5:][::-1]
 
