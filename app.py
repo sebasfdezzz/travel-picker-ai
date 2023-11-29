@@ -41,7 +41,7 @@ from keras.models import load_model
 
 
 train_model_bool = True
-file_name_model = 'DNN_model_2.h5'
+file_name_model = 'LSTM_model.h5'
 
 
 
@@ -94,8 +94,6 @@ tf_idf_vector = tfidf_transformer.transform(count_vector)
 df = pd.DataFrame(tf_idf_vector.T.todense(),
                   index = CV.get_feature_names_out(),
                   columns = city_names)
-# Ordenamos el Dataset por valores (Descendente)
-df.sort_values(by=city_names[0],ascending=False)
 
 #Sacar los valores mas relevantes de cada columna y almacenarlos en un diccionario
 top_words_by_city = {}
@@ -122,7 +120,7 @@ for city, top_words in top_words_by_city.items():
 
         # Create an example sentence using the selected words
         example_sentence = ' '.join(selected_words)
-        examples.append(example_sentence.capitalize())
+        examples.append(example_sentence.lower())
     examples_by_city[city] = examples
     #print(f"Generated {num_examples} examples for {city}.")
     print(examples_by_city['Bangkok'])
@@ -195,9 +193,9 @@ def Definir_Modelos_DNN(vocab_size, embedding_matrix, X_train, labels):
     model.add(embedding_layer)
 
     # Add a Dense (fully connected) layer with 20 units and dropout
-    model.add(Dense(32, activation='relu'))  # You can adjust the activation function as needed
+    model.add(Dense(len(labels), activation='relu'))  # You can adjust the activation function as needed
     # Add dropout layer
-    model.add(Dropout(0.2))
+    model.add(Dropout(0.1))
 
     model.add(Flatten())
     model.add(Dense(len(labels), activation='softmax'))
@@ -212,7 +210,7 @@ def Definir_Modelos_DNN(vocab_size, embedding_matrix, X_train, labels):
 # Generamos la arquitectura para el modelo de N1
 model_Examples = None
 if(train_model_bool):
-    model_Examples = Definir_Modelos_DNN(vocab_size_Examples, embedding_matrix_Examples, X_Examples_train, examples_by_city.keys())
+    model_Examples = Definir_Modelos_LSTM(vocab_size_Examples, embedding_matrix_Examples, X_Examples_train, examples_by_city.keys())
 else:
     with open('./'+file_name_model, 'rb') as file:
         model_Examples = load_model(file_name_model)
