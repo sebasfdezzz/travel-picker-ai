@@ -40,7 +40,7 @@ from keras.models import load_model
 
 
 
-train_model_bool = False
+train_model_bool = True
 file_name_model = 'LSTM_model.h5'
 
 
