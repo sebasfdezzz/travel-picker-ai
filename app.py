@@ -106,7 +106,7 @@ for city in city_names:
 for city, top_words in top_words_by_city.items():
     print(f"Top words for {city}: {', '.join(top_words)}")
 
-num_examples = 50# Number of example sentences to generate for each city
+num_examples = 70# Number of example sentences to generate for each city
 #words_per_example = 100
 examples_by_city ={}
 
