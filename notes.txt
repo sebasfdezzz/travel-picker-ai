@@ -12,4 +12,4 @@ probar modelo DNN
 
 DNN 4 10 example length
 DNN 5 15 example length
-DNN 4.1 10 example length
+DNN_model_best_2 100 length
