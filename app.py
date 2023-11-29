@@ -41,7 +41,7 @@ from keras.models import load_model
 
 
 train_model_bool = False
-file_name_model = 'LSTM_model_2.h5'
+file_name_model = 'DNN_model_2.h5'
 dev_mode=False
 
 
@@ -211,7 +211,7 @@ def Definir_Modelos_DNN(vocab_size, embedding_matrix, X_train, labels):
 # Generamos la arquitectura para el modelo de N1
 model_Examples = None
 if(train_model_bool):
-    model_Examples = Definir_Modelos_LSTM(vocab_size_Examples, embedding_matrix_Examples, X_Examples_train, examples_by_city.keys())
+    model_Examples = Definir_Modelos_DNN(vocab_size_Examples, embedding_matrix_Examples, X_Examples_train, examples_by_city.keys())
 else:
     with open('./'+file_name_model, 'rb') as file:
         model_Examples = load_model(file_name_model)
