@@ -40,11 +40,11 @@ from keras.models import load_model
 
 
 
-train_model_bool = True
-file_name_model = 'DNN_model_5.h5'
-dev_mode=True
-examples_length=50
-num_examples = 15
+train_model_bool = False
+file_name_model = 'DNN_model_best.h5'
+dev_mode=False
+examples_length=10
+num_examples = 100
 
 
 
