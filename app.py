@@ -206,9 +206,9 @@ def Definir_Modelos_DNN(vocab_size, embedding_matrix, X_train, labels):
     embedding_layer = Embedding(vocab_size, 300, weights=[embedding_matrix], input_length=X_train.shape[1], trainable=False)
     model.add(embedding_layer)
 
-    model.add(Dense(16, activation='relu'))  # You can adjust the activation function as needed
+    model.add(Dense(len(labels), activation='relu'))  # You can adjust the activation function as needed
     # Add dropout layer
-    model.add(Dropout(0.2))
+    model.add(Dropout(0.1))
 
     model.add(Flatten())
     model.add(Dense(len(labels), activation='softmax'))
@@ -241,7 +241,7 @@ def Entrenar_Modelos(X_train, Y, model, labels):
 
 
     # Ajuste de los datos de entrenamiento al modelo creado
-    history = model.fit(X_train, train_labels, epochs=30,  batch_size=1, verbose=1)
+    history = model.fit(X_train, train_labels, epochs=25,  batch_size=1, verbose=1)
 
     # Cálculo de los procentajes de Eficiencia y pérdida
     score = model.evaluate(X_train, train_labels, verbose=1)
