@@ -43,8 +43,8 @@ from keras.models import load_model
 train_model_bool = False
 file_name_model = 'DNN_model_best.h5'
 dev_mode=False
-examples_length=10
-num_examples = 100
+examples_length=100
+num_examples = 10
 
 
 
