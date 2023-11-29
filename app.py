@@ -15,7 +15,6 @@ import numpy
 import tensorflow
 import random
 import json
-#Generar la matriz de entrada
 from keras.preprocessing.text import Tokenizer
 from keras_preprocessing.sequence import pad_sequences
 from numpy import asarray
@@ -26,7 +25,6 @@ from keras.models import Sequential
 from tensorflow.keras.layers import Embedding, Flatten, Dense, Dropout
 import pickle
 from keras.models import load_model
-
 import spacy
 nlp = spacy.load('en_core_web_md')
 import re
@@ -35,7 +33,6 @@ from nltk.corpus import stopwords
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
 from keras.models import load_model
-#import keras.utils.pickle_utils
 
 
 
@@ -43,7 +40,7 @@ from keras.models import load_model
 
 
 
-train_model_bool = True
+train_model_bool = False
 file_name_model = 'DNN_model.h5'
 
 
@@ -341,7 +338,7 @@ def getCities(input_text):
     padded_sequences = custom_padding(sequences)
 
     # Load the pre-trained model
-    model = Model_Examples  # Replace with the actual model file name
+    model = model_Examples  # Replace with the actual model file name
 
     # Predict using the model
     predictions = model.predict(np.array(padded_sequences))
