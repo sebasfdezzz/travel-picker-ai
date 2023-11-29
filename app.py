@@ -141,10 +141,21 @@ for lista in examples_by_city.values():
 #print(X_Examples)
 
 #Generar la matriz de entrada
-
+tokenizer_path = 'tokenizer.pkl'
 maxlen = 100
-tokenizer_Examples = Tokenizer(num_words=10000)
-tokenizer_Examples.fit_on_texts(X_Examples)
+tokenizer_Examples=None
+if(train_model_bool):
+    tokenizer_Examples = Tokenizer(num_words=10000)
+    tokenizer_Examples.fit_on_texts(X_Examples)
+    tokenizer_json = tokenizer_Examples.to_json()
+    with open(tokenizer_path, 'w', encoding='utf-8') as f:
+        f.write(tokenizer_json)
+else:
+    # Load the tokenizer
+    with open(tokenizer_path, 'r', encoding='utf-8') as f:
+        loaded_tokenizer_json = f.read()
+        tokenizer_Examples = Tokenizer.from_json(loaded_tokenizer_json)
+
 X_Examples_Tok = tokenizer_Examples.texts_to_sequences(X_Examples)
 X_Examples_train = pad_sequences(X_Examples_Tok, padding='post', maxlen=maxlen)
 print("Matriz de entrada para Examples:")
