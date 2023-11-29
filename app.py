@@ -228,7 +228,7 @@ def Entrenar_Modelos(X_train, Y, model, labels):
 
 
     # Ajuste de los datos de entrenamiento al modelo creado
-    history = model.fit(X_train, train_labels, epochs=20,  batch_size=5, verbose=1)
+    history = model.fit(X_train, train_labels, epochs=20,  batch_size=1, verbose=1)
 
     # Cálculo de los procentajes de Eficiencia y pérdida
     score = model.evaluate(X_train, train_labels, verbose=1)
