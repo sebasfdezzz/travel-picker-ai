@@ -41,10 +41,10 @@ from keras.models import load_model
 
 
 train_model_bool = True
-file_name_model = 'DNN_model_4.h5'
+file_name_model = 'DNN_model_5.h5'
 dev_mode=True
-examples_length=10
-num_examples = 20
+examples_length=50
+num_examples = 5
 
 
 
