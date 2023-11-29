@@ -474,8 +474,9 @@ def get_unsplash_image(city):
 @app.route('/reason-to-go/', methods=['POST'])
 def get_gpt_reason():
     temp =  "sd asndjafskn akjf skndf dnf dsdn fdskn fdskn fkf dskf dsnf dsknf dsknf dsfk sknds fkdsf sknf sdknf dsnf dsknf dskf dsfknds flsd fns fkds fdsknf dskfn dsfknds fkds fkdsnf dskf dsknfds fks fdsknf dsknf dsknf dskf dskf dsknf fkds fks frekg trkn hknyt hkyth ylj yl jytpkhrkgepf wfow dqk dad 2o3 43kr f f foe flkf el feb grv ekv eovfe voefvke v e."
-    time.sleep(5) #comment for production
+    
     if(dev_mode):
+        time.sleep(5) #comment for production
         return jsonify({'generated_reason': temp}) #comment for production
     try:
         data = request.get_json()
