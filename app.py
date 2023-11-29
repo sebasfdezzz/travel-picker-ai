@@ -204,7 +204,7 @@ def Definir_Modelos_DNN(vocab_size, embedding_matrix, X_train, labels):
     embedding_layer = Embedding(vocab_size, 300, weights=[embedding_matrix], input_length=X_train.shape[1], trainable=False)
     model.add(embedding_layer)
 
-    model.add(Dense(len(labels)/2, activation='relu'))  # You can adjust the activation function as needed
+    model.add(Dense(16, activation='relu'))  # You can adjust the activation function as needed
     # Add dropout layer
     model.add(Dropout(0.1))
 
