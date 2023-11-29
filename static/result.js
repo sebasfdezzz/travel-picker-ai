@@ -109,6 +109,37 @@ let airports = {
 let chosen_city="New York";
 let cities_result = []; // Assuming this array is declared
 
+
+
+document.getElementById('leftArrow').addEventListener('click', function () {
+  navigateCarousel(-1);
+});
+
+document.getElementById('rightArrow').addEventListener('click', function () {
+  navigateCarousel(1);
+});
+
+function navigateCarousel(direction) {
+  const radioInputs = document.getElementsByName('position');
+  let currentIndex = 0;
+
+  // Find the currently checked radio input
+  for (let i = 0; i < radioInputs.length; i++) {
+    if (radioInputs[i].checked) {
+      currentIndex = i;
+      break;
+    }
+  }
+
+  // Calculate the new index based on the direction
+  let newIndex = (currentIndex + direction + radioInputs.length) % radioInputs.length;
+
+  // Check the new radio input and trigger the change event
+  radioInputs[newIndex].checked = true;
+  radioInputs[newIndex].dispatchEvent(new Event('change'));
+}
+
+
 function handleCitiesData(citiesData) {
     chosen_city = citiesData[0];
     citiesData.forEach(function (city) {
@@ -131,6 +162,8 @@ function handleCitiesData(citiesData) {
       });
   });
 }
+
+
 
 function getUnsplashImageAndUpdate(city) {
   fetch(`/get_image/${city}`)
