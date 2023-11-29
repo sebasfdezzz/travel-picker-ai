@@ -43,8 +43,8 @@ from keras.models import load_model
 train_model_bool = True
 file_name_model = 'DNN_model_3.h5'
 dev_mode=True
-examples_length=50
-num_examples = 3
+examples_length=10
+num_examples = 20
 
 
 
@@ -345,7 +345,18 @@ def getCities(input_text):
                 sequence = sequence + sequence
             padded_sequences.append(sequence[:maxlen])
         return padded_sequences
-    padded_sequences = custom_padding(sequences)
+    def standard_padding(sequences):
+        padded_sequences = []
+        for sequence in sequences:
+            if len(sequence) >= examples_length:
+                sequence = sequence[:maxlen]
+            else:
+                sequence = [item.rjust(examples_length, 0) for item in sequence]
+            padded_sequences.append(sequence[sequence])
+        return padded_sequences
+    #padded_sequences = custom_padding(sequences)
+    padded_sequences = standard_padding(sequences)
+
     print(padded_sequences)
     # Load the pre-trained model
     model = model_Examples  # Replace with the actual model file name
