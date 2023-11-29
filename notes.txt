@@ -8,3 +8,7 @@ https://platform.openai.com/docs/api-reference
 
 Falta
 probar modelo DNN
+
+
+DNN 4 10 example length
+DNN 5 50 example length
