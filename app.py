@@ -40,9 +40,9 @@ from keras.models import load_model
 
 
 
-train_model_bool = False
-file_name_model = 'DNN_model_best.h5'
-dev_mode=False
+train_model_bool = True
+file_name_model = 'DNN_model_best_2.h5'
+dev_mode=True
 examples_length=100
 num_examples = 10
 
