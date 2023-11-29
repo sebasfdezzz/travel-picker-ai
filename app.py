@@ -28,7 +28,7 @@ from tensorflow.keras.layers import Embedding, Flatten, Dense
 
 import pickle
 import spacy
-nlp = spacy.load('en_core_news_md')
+nlp = spacy.load('en_core_web_md')
 import re
 import numpy as np
 from nltk.corpus import stopwords
