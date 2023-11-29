@@ -11,4 +11,5 @@ probar modelo DNN
 
 
 DNN 4 10 example length
+DNN 5 15 example length
 LSTM_model_3.h5 50 length
