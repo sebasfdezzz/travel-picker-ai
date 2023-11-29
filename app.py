@@ -40,9 +40,10 @@ from keras.models import load_model
 
 
 
-train_model_bool = True
+train_model_bool = False
 file_name_model = 'DNN_model_3.h5'
-dev_mode=True
+dev_mode=False
+examples_length=60
 
 
 
@@ -101,7 +102,7 @@ top_words_by_city = {}
 
 for city in city_names:
     # Sort the DataFrame column (city) by TF-IDF values to get top words
-    top_words_by_city[city] = df[city].nlargest(60).index.tolist()
+    top_words_by_city[city] = df[city].nlargest(examples_length).index.tolist()
 
 # Display or further process the top words for each city
 for city, top_words in top_words_by_city.items():
@@ -116,7 +117,7 @@ for city, top_words in top_words_by_city.items():
     examples = []
     for _ in range(num_examples):
         # Randomly select a few words from the top words list for the city
-        num_words_in_sentence = 60
+        num_words_in_sentence = examples_length
         selected_words = top_words.copy()
         random.shuffle(selected_words)
 
@@ -143,7 +144,7 @@ for lista in examples_by_city.values():
 
 #Generar la matriz de entrada
 tokenizer_path = 'tokenizer_'+file_name_model.split('.')[0]+'.pkl'
-maxlen = 60
+maxlen = examples_length
 tokenizer_Examples=None
 if(train_model_bool):
     tokenizer_Examples = Tokenizer(num_words=10000)
@@ -337,7 +338,7 @@ def getCities(input_text):
     sequences = tokenizer_Examples.texts_to_sequences([input_text])
 
     # Custom padding function to repeat words until there are 100 encoded words
-    def custom_padding(sequences, maxlen=100):
+    def custom_padding(sequences, maxlen=examples_length):
         padded_sequences = []
         for sequence in sequences:
             while len(sequence) < maxlen:
