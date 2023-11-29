@@ -44,7 +44,7 @@ train_model_bool = True
 file_name_model = 'DNN_model_5.h5'
 dev_mode=True
 examples_length=50
-num_examples = 5
+num_examples = 15
 
 
 
