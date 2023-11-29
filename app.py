@@ -26,7 +26,9 @@ from keras.layers import DNN
 from keras.layers import Embedding
 from keras.utils.np_utils import to_categorical
 from keras.models import Sequential
-from keras.layers import Embedding, Flatten, Dense
+from keras.layers import Embedding, Flatten
+from tensorflow.keras.layers import Dense
+
 import pickle
 import spacy
 nlp = spacy.load('es_core_news_md')
