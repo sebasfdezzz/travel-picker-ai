@@ -101,13 +101,13 @@ top_words_by_city = {}
 
 for city in city_names:
     # Sort the DataFrame column (city) by TF-IDF values to get top words
-    top_words_by_city[city] = df[city].nlargest(100).index.tolist()
+    top_words_by_city[city] = df[city].nlargest(60).index.tolist()
 
 # Display or further process the top words for each city
 for city, top_words in top_words_by_city.items():
     print(f"Top words for {city}: {', '.join(top_words)}")
 
-num_examples = 70# Number of example sentences to generate for each city
+num_examples = 50# Number of example sentences to generate for each city
 #words_per_example = 100
 examples_by_city ={}
 
@@ -116,8 +116,9 @@ for city, top_words in top_words_by_city.items():
     examples = []
     for _ in range(num_examples):
         # Randomly select a few words from the top words list for the city
-        num_words_in_sentence = 100
-        selected_words = random.sample(top_words, num_words_in_sentence)
+        num_words_in_sentence = 60
+        selected_words = top_words.copy()
+        random.shuffle(selected_words)
 
         # Create an example sentence using the selected words
         example_sentence = ' '.join(selected_words)
@@ -142,7 +143,7 @@ for lista in examples_by_city.values():
 
 #Generar la matriz de entrada
 tokenizer_path = 'tokenizer_'+file_name_model.split('.')[0]+'.pkl'
-maxlen = 100
+maxlen = 60
 tokenizer_Examples=None
 if(train_model_bool):
     tokenizer_Examples = Tokenizer(num_words=10000)
@@ -206,7 +207,7 @@ def Definir_Modelos_DNN(vocab_size, embedding_matrix, X_train, labels):
 
     model.add(Dense(16, activation='relu'))  # You can adjust the activation function as needed
     # Add dropout layer
-    model.add(Dropout(0.1))
+    model.add(Dropout(0.2))
 
     model.add(Flatten())
     model.add(Dense(len(labels), activation='softmax'))
