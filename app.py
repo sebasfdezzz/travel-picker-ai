@@ -345,8 +345,8 @@ def getCities(input_text):
                 sequence = sequence + sequence
             padded_sequences.append(sequence[:maxlen])
         return padded_sequences
-    #padded_sequences = custom_padding(sequences)
-    padded_sequences = pad_sequences(sequences, padding='post', maxlen=examples_length)
+    padded_sequences = custom_padding(sequences)
+    #padded_sequences = pad_sequences(sequences, padding='post', maxlen=examples_length)
 
     print(padded_sequences)
     # Load the pre-trained model
