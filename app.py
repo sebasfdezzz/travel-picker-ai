@@ -24,9 +24,9 @@ from keras.models import Sequential
 from tensorflow.keras.utils import to_categorical
 from keras.models import Sequential
 from tensorflow.keras.layers import Embedding, Flatten, Dense
-
-
 import pickle
+from keras.models import load_model
+
 import spacy
 nlp = spacy.load('en_core_web_md')
 import re
@@ -215,7 +215,7 @@ if(train_model_bool):
     model_Examples = Definir_Modelos_DNN(vocab_size_Examples, embedding_matrix_Examples, X_Examples_train, examples_by_city.keys())
 else:
     with open('./'+file_name_model, 'rb') as file:
-        model_Examples = pickle.load(file)
+        model_Examples = load_model(file_name_model)
 
 
 def Entrenar_Modelos(X_train, Y, model, labels):
@@ -243,8 +243,7 @@ history_Examples = None
 if(train_model_bool):
     history_Examples = Entrenar_Modelos(X_Examples_train, Y_Examples, model_Examples, examples_by_city.keys())
     # Load the model
-    with open('./'+file_name_model, 'wb') as f:
-        pickle.dump(model_Examples, f)
+    model_Examples.save(file_name_model)
 
 # Now you can use `loaded_model` for predictions or further training
 
