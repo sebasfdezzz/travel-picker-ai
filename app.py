@@ -58,8 +58,8 @@ with open('parte_slop.json', encoding='utf-8') as file:
 city_names = list(Paises.keys())  # Extract city names into a list
 descriptions = list(Paises.values())  # Extract descriptions into a list
 
-print(city_names)
-print(descriptions)
+#print(city_names)
+#print(descriptions)
 
 nltk.download('stopwords')
 stopwords_list = list(set(stopwords.words('english')))
@@ -111,7 +111,7 @@ num_examples = 70# Number of example sentences to generate for each city
 examples_by_city ={}
 
 for city, top_words in top_words_by_city.items():
-    print(f"Examples for {city}:")
+    #print(f"Examples for {city}:")
     examples = []
     for _ in range(num_examples):
         # Randomly select a few words from the top words list for the city
@@ -123,7 +123,7 @@ for city, top_words in top_words_by_city.items():
         examples.append(example_sentence.lower())
     examples_by_city[city] = examples
     #print(f"Generated {num_examples} examples for {city}.")
-    print(examples_by_city['Bangkok'])
+    #print(examples_by_city['Bangkok'])
 
 Y_Examples = list()
 
