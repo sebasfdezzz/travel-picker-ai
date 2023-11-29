@@ -21,7 +21,7 @@ from keras_preprocessing.sequence import pad_sequences
 from numpy import asarray
 from numpy import zeros
 from keras.models import Sequential
-from keras.utils.np_utils import to_categorical
+from tensorflow.keras.utils import to_categorical
 from keras.models import Sequential
 from tensorflow.keras.layers import Embedding, Flatten, Dense
 
@@ -140,8 +140,7 @@ for lista in examples_by_city.values():
 print(X_Examples)
 
 #Generar la matriz de entrada
-from keras.preprocessing.text import Tokenizer
-from keras_preprocessing.sequence import pad_sequences
+
 maxlen = 100
 tokenizer_Examples = Tokenizer(num_words=5000)
 tokenizer_Examples.fit_on_texts(X_Examples)
@@ -149,10 +148,6 @@ X_Examples_Tok = tokenizer_Examples.texts_to_sequences(X_Examples)
 X_Examples_train = pad_sequences(X_Examples_Tok, padding='post', maxlen=maxlen)
 print("Matriz de entrada para Examples:")
 print(X_Examples_train)
-
-# Declaración de librerías para manejo de arreglos (Numpy)
-from numpy import asarray
-from numpy import zeros
 
 # Asignamos los embeddings correspondientes a cada matriz
 # con la que se entrenarán los modelos por medio de un método
@@ -174,11 +169,7 @@ def Asignar_Embeddings(tokenizer, vocab_size):
 vocab_size_Examples = len(tokenizer_Examples.word_index) + 1
 embedding_matrix_Examples = Asignar_Embeddings(tokenizer_Examples, vocab_size_Examples)
 
-# Declaración de modelo Secuencial que usaremos para todos los casos
-from keras.models import Sequential
-from keras.layers.core import Dense
-#from keras.layers import DNN
-from keras.layers import Embedding
+
 
 # Definición del método para tener la arquitectura de los modelos para cada nivel contextual
 def Definir_Modelos_LSTM(vocab_size, embedding_matrix, X_train, labels):
@@ -224,9 +215,6 @@ else:
     with open('./'+file_name_model, 'rb') as file:
         model_Examples = pickle.load(file)
 
-# Declaramos el método para entrenar cada modelo
-#from tensorflow.keras.utils import to_categorical #COLLLAB
-from keras.utils.np_utils import to_categorical
 
 def Entrenar_Modelos(X_train, Y, model, labels):
     #Y = np.array(Y)
@@ -323,14 +311,6 @@ if(train_model_bool):
 
 
 
-
-
-import re
-import numpy as np
-from nltk.corpus import stopwords
-from keras.preprocessing.text import Tokenizer
-from keras.preprocessing.sequence import pad_sequences
-from keras.models import load_model
 
 def getCities(input_text):
     # Remove all non-alphanumeric characters
