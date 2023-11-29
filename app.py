@@ -40,8 +40,8 @@ from keras.models import load_model
 
 
 
-train_model_bool = False
-file_name_model = 'DNN_model.h5'
+train_model_bool = True
+file_name_model = 'DNN_model_2.h5'
 
 
 
@@ -108,7 +108,7 @@ for city in city_names:
 for city, top_words in top_words_by_city.items():
     print(f"Top words for {city}: {', '.join(top_words)}")
 
-num_examples = 10# Number of example sentences to generate for each city
+num_examples = 50# Number of example sentences to generate for each city
 #words_per_example = 100
 examples_by_city ={}
 
@@ -117,7 +117,7 @@ for city, top_words in top_words_by_city.items():
     examples = []
     for _ in range(num_examples):
         # Randomly select a few words from the top words list for the city
-        num_words_in_sentence = random.randint(99, 100)  # Randomly select sentence length
+        num_words_in_sentence = 100
         selected_words = random.sample(top_words, num_words_in_sentence)
 
         # Create an example sentence using the selected words
@@ -144,7 +144,7 @@ print(X_Examples)
 #Generar la matriz de entrada
 
 maxlen = 100
-tokenizer_Examples = Tokenizer(num_words=5000)
+tokenizer_Examples = Tokenizer(num_words=10000)
 tokenizer_Examples.fit_on_texts(X_Examples)
 X_Examples_Tok = tokenizer_Examples.texts_to_sequences(X_Examples)
 X_Examples_train = pad_sequences(X_Examples_Tok, padding='post', maxlen=maxlen)
@@ -195,7 +195,7 @@ def Definir_Modelos_DNN(vocab_size, embedding_matrix, X_train, labels):
     model.add(embedding_layer)
 
     # Add a Dense (fully connected) layer with 20 units and dropout
-    model.add(Dense(64, activation='relu'))  # You can adjust the activation function as needed
+    model.add(Dense(32, activation='relu'))  # You can adjust the activation function as needed
     # Add dropout layer
     model.add(Dropout(0.2))
 
@@ -230,7 +230,7 @@ def Entrenar_Modelos(X_train, Y, model, labels):
 
 
     # Ajuste de los datos de entrenamiento al modelo creado
-    history = model.fit(X_train, train_labels, epochs=30,  batch_size=1, verbose=1)
+    history = model.fit(X_train, train_labels, epochs=20,  batch_size=5, verbose=1)
 
     # Cálculo de los procentajes de Eficiencia y pérdida
     score = model.evaluate(X_train, train_labels, verbose=1)
@@ -334,9 +334,8 @@ def getCities(input_text):
                 sequence = sequence + sequence
             padded_sequences.append(sequence[:maxlen])
         return padded_sequences
-
     padded_sequences = custom_padding(sequences)
-
+    print(padded_sequences)
     # Load the pre-trained model
     model = model_Examples  # Replace with the actual model file name
 
