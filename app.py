@@ -141,7 +141,7 @@ for lista in examples_by_city.values():
 #print(X_Examples)
 
 #Generar la matriz de entrada
-tokenizer_path = 'tokenizer.pkl'
+tokenizer_path = 'tokenizer_'+file_name_model.split('.')[0]+'.pkl'
 maxlen = 100
 tokenizer_Examples=None
 if(train_model_bool):
