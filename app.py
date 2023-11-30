@@ -42,7 +42,7 @@ from keras.models import load_model
 
 train_model_bool = False
 file_name_model = 'DNN_model_final.h5'
-dev_mode=False
+dev_mode=True
 examples_length=100
 num_examples = 10
 
